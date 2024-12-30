@@ -72,7 +72,11 @@ VALUES
 INSERT INTO LeaveRequests (emp_id, leave_date, leave_type, leave_status) 
 VALUES 
 (1, '2024-12-25', 'Vacation', 'Approved'),
-(2, '2024-12-26', 'Sick Leave', 'Pending');
+(2, '2024-12-26', 'Sick Leave', 'Pending')
+(4, '2024-12-24', 'Vacation', 'Approved'),
+(6, '2024-12-27', 'Sick Leave', 'Pending');
+
+--- VIEW ALL EMPLOYEE'S ATTENDANCE,DEPATRMENT AND THEIR WORKING HOURS
 SELECT 
     e.name AS Employee_Name,
     d.department_name AS Department,
@@ -88,6 +92,7 @@ JOIN
     Departments d ON e.department_id = d.department_id
 ORDER BY 
     ar.date DESC;
+---
 SELECT 
     e.name AS Employee_Name,
     d.department_name AS Department,
