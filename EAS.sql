@@ -111,7 +111,7 @@ WHERE
 ORDER BY 
     lr.leave_date;
 
----VIEW ATTENDANCE RECORD FOR SPECIFIC RATE
+---VIEW ATTENDANCE RECORD FOR SPECIFIC DATE
 SELECT 
     e.name AS Employee_Name,
     d.department_name AS Department,
@@ -143,17 +143,3 @@ WHERE
     ar.clock_in > '09:00:00'
 ORDER BY 
     ar.clock_in;
-
-SELECT 
-    e.name AS Employee_Name,
-    lr.leave_date AS Leave_Date,
-    lr.leave_type AS Leave_Type,
-    lr.leave_status AS Status
-FROM 
-    LeaveRequests lr
-JOIN 
-    Employees e ON lr.emp_id = e.emp_id
-WHERE 
-    lr.leave_status = 'Pending'
-ORDER BY 
-    lr.leave_date;
