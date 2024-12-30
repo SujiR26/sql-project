@@ -1,10 +1,14 @@
+---create database
 create schema EAS;
 use EAS;
+
+-- create table DEPARTMENT 
 CREATE TABLE Departments (
     department_id INT AUTO_INCREMENT PRIMARY KEY,
     department_name VARCHAR(100) NOT NULL
 );
 
+---create table EMPLOYEES
 CREATE TABLE Employees (
     emp_id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
@@ -14,6 +18,7 @@ CREATE TABLE Employees (
     FOREIGN KEY (department_id) REFERENCES Departments(department_id)
 );
 
+---  create table ATTENDANCERECORDS
 CREATE TABLE AttendanceRecords (
     record_id INT AUTO_INCREMENT PRIMARY KEY,
     emp_id INT NOT NULL,
@@ -23,6 +28,7 @@ CREATE TABLE AttendanceRecords (
     FOREIGN KEY (emp_id) REFERENCES Employees(emp_id)
 );
 
+---create table LEAVEREQUEST
 CREATE TABLE LeaveRequests (
     leave_id INT AUTO_INCREMENT PRIMARY KEY,
     emp_id INT NOT NULL,
@@ -31,17 +37,38 @@ CREATE TABLE LeaveRequests (
     leave_status VARCHAR(50) DEFAULT 'Pending',
     FOREIGN KEY (emp_id) REFERENCES Employees(emp_id)
 );
+
+---insert values in table(DEAPARTMENT)
 INSERT INTO Departments (department_name) 
-VALUES ('Engineering'), ('HR'), ('Sales');
+VALUES ('SW Engineering'), ('HR'), ('Sales'),('IT');
+
+---insert values in table(EMPLOYEES)
 INSERT INTO Employees (name, department_id, position, date_of_joining) 
 VALUES 
-('Suji', 1, 'Software Engineer', '2023-01-15'),
-('Jane Smith', 2, 'HR Manager', '2022-05-10'),
-('Alice Johnson', 3, 'Sales Executive', '2023-07-20');
+('Suji', 1, 'SW Engineer', '2023-01-15'),
+('Jananee', 2, 'HR', '2022-05-10'),
+('Aleena', 3, 'Sales', '2023-07-20'),
+('Santhiya', 1, 'SW Engineer', '2023-04-06'),
+('Lisya', 2, 'HR', '2022-07-15'),
+('Kaviya', 4, 'IT', '2023-09-04'),
+('Bathma', 2, 'HR', '2022-06-10'),
+('Josh', 3, 'Sales', '2023-08-14'),
+('Rishetha', 4, 'IT', '2023-03-09');
+
+---insert values in (ATTENDANCERECORDS)
 INSERT INTO AttendanceRecords (emp_id, date, clock_in, clock_out) 
 VALUES 
 (1, '2024-12-20', '09:00:00', '17:00:00'),
-(2, '2024-12-20', '08:30:00', '16:30:00');
+(2, '2024-12-20', '08:30:00', '16:30:00'),
+(3, '2024-12-20', '09:15:00', '17:30:00'),
+(4, '2024-12-20', '08:30:00', '18:00:00'),
+(5, '2024-12-20', '08:00:00', '17:30:00'),
+(6, '2024-12-20', '09:30:00', '18:30:00'),
+(7, '2024-12-20', '08:00:00', '16:15:00'),
+(8, '2024-12-20', '09:00:00', '16:30:00'),
+(9, '2024-12-20', '09:30:00', '18:30:00');
+
+---insert values in (LEAVEREQUESTS)
 INSERT INTO LeaveRequests (emp_id, leave_date, leave_type, leave_status) 
 VALUES 
 (1, '2024-12-25', 'Vacation', 'Approved'),
