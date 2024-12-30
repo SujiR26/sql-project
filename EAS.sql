@@ -92,7 +92,8 @@ JOIN
     Departments d ON e.department_id = d.department_id
 ORDER BY 
     ar.date DESC;
----
+
+---DETAILS OF APPROVED LEAVE REQUEST
 SELECT 
     e.name AS Employee_Name,
     d.department_name AS Department,
@@ -109,6 +110,8 @@ WHERE
     lr.leave_status = 'Approved'
 ORDER BY 
     lr.leave_date;
+
+---VIEW ATTENDANCE RECORD FOR SPECIFIC RATE
 SELECT 
     e.name AS Employee_Name,
     d.department_name AS Department,
@@ -123,6 +126,8 @@ JOIN
     Departments d ON e.department_id = d.department_id
 WHERE 
     ar.date = '2024-12-20';
+
+---ATTENDANCE RECORDS FOR EMPLOYEES WHO CLOCKED IN LATER THAN 9.00am
 SELECT 
     e.name AS Employee_Name,
     d.department_name AS Department,
@@ -138,6 +143,7 @@ WHERE
     ar.clock_in > '09:00:00'
 ORDER BY 
     ar.clock_in;
+
 SELECT 
     e.name AS Employee_Name,
     lr.leave_date AS Leave_Date,
