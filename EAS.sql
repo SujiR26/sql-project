@@ -143,3 +143,16 @@ WHERE
     ar.clock_in > '09:00:00'
 ORDER BY 
     ar.clock_in;
+
+
+--- COUNT EMPLOYEE ATTENDANCE STATUS BY MONTH
+SELECT 
+    e.Name AS EmployeeName,
+    COUNT(CASE WHEN a.Status = 'Present' THEN 1 END) AS TotalPresent,
+    COUNT(CASE WHEN a.Status = 'Absent' THEN 1 END) AS TotalAbsent,
+    COUNT(CASE WHEN a.Status = 'Leave' THEN 1 END) AS TotalLeave
+FROM AttendanceRecords a
+JOIN Employees e ON a.EmployeeID = e.EmployeeID
+WHERE MONTH(a.Date) = 12 AND YEAR(a.Date) = 2024
+GROUP BY a.EmployeeID;
+
